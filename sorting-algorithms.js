@@ -106,6 +106,28 @@
      * This algorithm is O(n^2) although its time complexity is slightly better than
      * both selection and bubble sort.
     */
+
+    var length = array.length;
+    var i, j, temp;
+
+    for (i = 1; i < length; i += 1) {
+      j    = i;
+      temp = array[i];
+
+      while (j > 0 && array[j - 1] > temp) {
+        // as long as the while condition passes, the goal is to continue shifting
+        // the sorted elements up until we find the position to insert the
+        // unsorted element
+        array[j] = array[j - 1];
+        j -= 1;
+      }
+
+      // by the time the inner loop breaks, the jth position will be where the
+      // unsorted element should be inserted
+      array[j] = temp;
+    }
+
+    return array;
   };
 
   _sa.mergeSort = function (array) {
