@@ -90,7 +90,22 @@
   };
 
   _sa.insertionSort = function (array) {
-
+    /*
+     * The main idea behind insertion sort is similar to selection sort in that
+     * you want to maintain to subsets of your original array: sorted and unsorted
+     * subsets.
+     *
+     * The mechanism to maintain these separate partitions is different
+     * though. With insertion sort, you have an inner loop which, given the first
+     * element in the unsorted subset, attempts to find the position in the sorted
+     * subset the element belongs in. In the process, the inner loop will shift up
+     * the elements in the sorted subset one by one until it finds the position to
+     * 'insert' the unsorted element. The purpose of the outer loop is to iterate
+     * through all the remaining elements in the unsorted subset.
+     *
+     * This algorithm is O(n^2) although its time complexity is slightly better than
+     * both selection and bubble sort.
+    */
   };
 
   _sa.mergeSort = function (array) {
