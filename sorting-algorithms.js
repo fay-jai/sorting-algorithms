@@ -52,7 +52,41 @@
   };
 
   _sa.bubbleSort = function (array) {
+    /*
+     * The main idea behind bubble sort is having an inner loop which compares the value
+     * at the current and current + 1 indices, and if the current index is the larger value,
+     * then swapping the values. Once completing a full iteration of the inner loop, the
+     * max value in the array will have 'bubbled' up to the last index in the array.
+     * Therefore, the goal of the outer loop is to perform enough inner loops to bubble up
+     * each iteration's max value to the end of the array.
+     *
+     * This algorithm is O(n^2) because there is an inner loop within an outer loop.
+    */
 
+    var length = array.length;
+    var i, j, temp, noSwap;
+
+    for (i = 0; i < length; i += 1) {
+      noSwap = true;
+      for (j = 0; j < length - i - 1; j += 1) {
+      // the reason the terminating condition includes a (minus i) is because
+      // you don't need to check as many elements after each iteration since
+      // the max value gets bubbled up each time
+
+        if (array[j] > array[j + 1]) {
+          // swap
+          temp         = array[j];
+          array[j]     = array[j + 1];
+          array[j + 1] = temp;
+          noSwap       = false;
+        }
+      }
+      // noSwap is an optimization that improves the algorithm by breaking out of
+      // outer loop once a full iteration of the inner loop doesn't produce a swap
+      if (noSwap) { break; }
+    }
+
+    return array;
   };
 
   _sa.insertionSort = function (array) {
