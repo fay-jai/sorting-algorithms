@@ -131,7 +131,78 @@
   };
 
   _sa.mergeSort = function (array) {
+    /*
+     * Merge sort is a divide and conquer sorting algorithm where the main purpose is
+     * to continually divide the array into 2 separate subarrays until reaching the
+     * base case of a 1-element or 0-element array, and then merging the subarrays
+     * back together in sorted order. As such, there are 2 main components: dividing
+     * the array into 2, and merging 2 arrays back into 1.
+     *
+     * The time complexity for merge sort is O(n * log(n)) - intuitively, this is because
+     * the algorithm continues to reduce the size of the problem in half with each
+     * recursive iteration.
+    */
 
+    var length = array.length;
+    var mid, left, right;
+
+    // base case
+    if (length < 2) { return array; }
+
+    mid   = Math.floor( length / 2 );
+    left  = array.slice(0, mid);
+    right = array.slice(mid);
+
+    // Recursive calls to sort 2 subarrays
+    left  = _sa.mergeSort(left);
+    right = _sa.mergeSort(right);
+    _merge(array, left, right);
+
+    return array;
+  };
+
+  var _merge = function (array, left, right) {
+    /*
+     * The idea behind this function is that given 2 sorted arrays, left and right,
+     * we want to replace their contents within the original 'array'. This becomes
+     * a trivial task because the values in left and right array are sorted from left
+     * to right.
+    */
+
+    // Array indices
+    var a = 0;
+    var l = 0;
+    var r = 0;
+
+    // Array lengths
+    var lLen = left.length;
+    var rLen = right.length;
+
+    while (l < lLen && r < rLen) {
+      if (left[l] < right[r]) {
+        array[a] = left[l];
+        l += 1;
+      } else {
+        array[a] = right[r];
+        r += 1;
+      }
+      a += 1;
+    }
+
+    // At this point, either the left or right array is exhausted and we want to take
+    // the remaining contents of the remaining array and append them to the original array.
+    // Therefore, only 1 of the 2 loops below will execute.
+    while (l < lLen) {
+      array[a] = left[l];
+      a += 1;
+      l += 1;
+    }
+
+    while (r < rLen) {
+      array[a] = right[r];
+      a += 1;
+      r += 1;
+    }
   };
 
   _sa.quickSort = function (array) {
