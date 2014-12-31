@@ -206,7 +206,36 @@
   };
 
   _sa.quickSort = function (array) {
+    /*
+     * Quick sort is a divide and conquer sorting algorithm where you create two subarrays
+     * based on a pivot value. One subarray will have values less than or equal to the
+     * pivot value, while the other subarray will have values greater than the pivot value.
+     * Both arrays will be sorted and then merged back together to return the original array
+     * in sorted order.
+    */
 
+    var length = array.length;
+    var pivot, left, right, i;
+
+    // base case
+    if (length < 2) { return array; }
+
+    pivot = array[0];
+    left  = [];
+    right = [];
+
+    // populate left with values <= pivot and right with values > pivot
+    for (i = 1; i < length; i += 1) {
+      if (array[i] <= pivot) {
+        left.push( array[i] );
+      } else {
+        right.push( array[i] );
+      }
+    }
+
+    left = _sa.quickSort(left);
+    right = _sa.quickSort(right);
+    return Array.prototype.concat( left, [ pivot ], right );
   };
 
   global._sa = _sa;
