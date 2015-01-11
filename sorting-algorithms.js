@@ -144,7 +144,7 @@
     var mid, left, right;
 
     // base case
-    if (length < 2) { return array; }
+    if (length < 2) return array;
 
     mid   = Math.floor( length / 2 );
     left  = array.slice(0, mid);
@@ -223,11 +223,7 @@
 
     // populate left with values <= pivot and right with values > pivot
     for (i = 1; i < length; i += 1) {
-      if (array[i] <= pivot) {
-        left.push( array[i] );
-      } else {
-        right.push( array[i] );
-      }
+      ( array[i] <= pivot ? left : right ).push( array[i] );
     }
 
     left = _sa.quickSort(left);
