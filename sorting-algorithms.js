@@ -24,9 +24,7 @@
     */
 
     var length = array.length;
-    var i, j, minIdx, temp;
-
-    if (length < 2) { return array; }
+    var minIdx, temp, i, j;
 
     for (i = 0; i < length - 1; i += 1) {
       minIdx = i;
