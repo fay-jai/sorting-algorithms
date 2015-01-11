@@ -7,6 +7,12 @@
   // var c = [100, 23, 10, 8, 1, 0, -1, -5];
   // var d = [-1, 0, 1, 10, 100];
 
+  var swap = function (array, i, j) {
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  };
+
   _sa.selectionSort = function (array) {
     /*
      * The main idea behind selection sort is that you want to maintain
@@ -39,11 +45,7 @@
 
       // by the time the inner loop ends, array[minIdx] will contain the
       // current iterations min value
-
-      // swap
-      temp          = array[i];
-      array[i]      = array[minIdx];
-      array[minIdx] = temp;
+      swap(array, i, minIdx);
     }
 
     return array;
@@ -72,10 +74,7 @@
       // the max value gets bubbled up each time
 
         if (array[j] > array[j + 1]) {
-          // swap
-          temp         = array[j];
-          array[j]     = array[j + 1];
-          array[j + 1] = temp;
+          swap(array, j, j + 1);
           noSwap       = false;
         }
       }
