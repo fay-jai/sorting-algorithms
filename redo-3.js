@@ -87,7 +87,59 @@ var insertionSort = function (array) {
   return array;
 };
 
-// Merge Sort
+/*
+ * Merge Sort
+ *
+ * The idea behind merge sort is to continue reducing the original array into
+ * two smaller arrays (where splitting occurs at the middle index). Once the
+ * smaller arrays are reduced to the base case, then a merge operation happens
+ * between the smaller arrays to form back the larger array.
+*/
 
+var mergeSort = function (array) {
+  var len = array.length;
+  var mid, left, right;
+  // base case
+  if (len < 2) return array;
+
+  mid   = Math.floor( len / 2 );
+  left  = mergeSort( array.slice(0, mid) );
+  right = mergeSort( array.slice(mid) );
+
+  return merge(array, left, right);
+};
+
+var merge = function (array, left, right) {
+  var leftLen  = left.length;
+  var rightLen = right.length;
+  var i = 0; // array
+  var j = 0; // left
+  var k = 0; // right
+
+  while (j < leftLen && k < rightLen) {
+    if (left[j] <= right[k]) {
+      array[i] = left[j];
+      j += 1;
+    } else {
+      array[i] = right[k];
+      k += 1;
+    }
+    i += 1;
+  }
+
+  while (j < leftLen) {
+    array[i] = left[j];
+    i += 1;
+    j += 1;
+  }
+
+  while (k < rightLen) {
+    array[i] = right[k];
+    i += 1;
+    k += 1;
+  }
+
+  return array;
+};
 
 // Quick Sort
