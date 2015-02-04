@@ -35,7 +35,30 @@ var selectionSort = function (array) {
   return array;
 };
 
-// Bubble Sort
+/*
+ * Bubble Sort
+ *
+ * The idea behind bubble sort is to continuously swap each pair of items so that
+ * the max of the 2 values keeps moving towards the end of the array. Each subsequent
+ * pass through the elements can check one less item (at the end of the array).
+*/
+
+var bubbleSort = function (array) {
+  var len = array.length;
+  var i, j, hasSwap;
+
+  for (i = 0; i < len; i += 1) {
+    hasSwap = false;
+    for (j = 0; j < len - i - 1; j += 1) {
+      if (array[j] > array[j + 1]) {
+        swap(array, j, j + 1);
+        hasSwap = true;
+      }
+    }
+    if (!hasSwap) break;
+  }
+  return array;
+};
 
 
 // Insertion Sort
