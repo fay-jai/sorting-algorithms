@@ -60,9 +60,32 @@ var bubbleSort = function (array) {
   return array;
 };
 
+/*
+ * Insertion Sort
+ *
+ * The idea behind insertion sort identify the current hole value and keep on
+ * shifting the previous values up until the first (previous) value that is less
+ * than the hole value. Once that index is determined, that's the index where
+ * the hole value will be placed into.
+*/
 
-// Insertion Sort
+var insertionSort = function (array) {
+  var len = array.length;
+  var i, j, hole;
 
+  for (i = 0; i < len; i += 1) {
+    hole = array[i];
+
+    j = i;
+    while (j > 0 && array[j - 1] > hole) {
+      array[j] = array[j - 1];
+      j -= 1;
+    }
+    array[j] = hole;
+  }
+
+  return array;
+};
 
 // Merge Sort
 
