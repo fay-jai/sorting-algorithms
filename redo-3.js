@@ -142,4 +142,30 @@ var merge = function (array, left, right) {
   return array;
 };
 
-// Quick Sort
+/*
+ * Quick Sort
+ *
+ * The idea behind quick sort is to select a pivot (first item in array) and
+ * create left and right arrays which contain values <= and > the pivot (respectively).
+ * The algorithm continues by recursively quick sorting the left and right arrays
+ * and then concatenating the 3 arrays in correct order.
+*/
+
+var quickSort = function (array) {
+  var len, pivot, left, right, i;
+  // base case
+  if (array.length < 2) return array;
+
+  pivot = array.splice(0, 1);
+  len   = array.length;
+  left  = [];
+  right = [];
+
+  for (i = 0; i < len; i += 1) {
+    (array[i] <= pivot[0] ? left : right).push( array[i] );
+  }
+
+  left  = quickSort( left );
+  right = quickSort( right );
+  return Array.prototype.concat(left, pivot, right);
+};

@@ -117,7 +117,7 @@ var quickSort = function (array) {
   var len   = array.length;
 
   for (var i = 0; i < len; i += 1) {
-    (array[i] <= first ? left : right).push( array[i] );
+    (array[i] <= first[0] ? left : right).push( array[i] );
   }
 
   left  = quickSort(left);
