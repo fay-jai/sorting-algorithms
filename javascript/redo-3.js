@@ -63,8 +63,8 @@ var bubbleSort = function (array) {
 /*
  * Insertion Sort
  *
- * The idea behind insertion sort identify the current hole value and keep on
- * shifting the previous values up until the first (previous) value that is less
+ * The idea behind insertion sort is to identify the current hole value and continue
+ * shifting the previous values up until reaching the first (previous) value that is less
  * than the hole value. Once that index is determined, that's the index where
  * the hole value will be placed into.
 */
