@@ -50,12 +50,70 @@ module Sort_Algorithms
 
   # merge sort
   def self.merge_sort(array)
+    len = array.length
+    return array if len < 2
 
+    mid   = (len / 2).floor
+    left  = merge_sort( array[0...mid]   )
+    right = merge_sort( array[mid...len] )
+
+    merge array, left, right
+  end
+
+  def self.merge(array, left, right)
+    left_len  = left.length
+    right_len = right.length
+    i = 0 # array
+    j = 0 # left
+    k = 0 # right
+
+    while j < left_len && k < right_len
+      if left[j] <= right[k]
+        array[i] = left[j]
+        j += 1
+      else
+        array[i] = right[k]
+        k += 1
+      end
+      i += 1
+    end
+
+    while j < left_len
+      array[i] = left[j]
+      i += 1
+      j += 1
+    end
+
+    while k < right_len
+      array[i] = right[k]
+      i += 1
+      k += 1
+    end
+
+    array
   end
 
   # quick sort
   def self.quick_sort(array)
+    len = array.length
+    return array if len < 2
 
+    pivot = array[0...1]
+    left  = []
+    right = []
+
+    for i in 1...len
+      if array[i] <= pivot[0]
+        left.push array[i]
+      else
+        right.push array[i]
+      end
+    end
+
+    left  = quick_sort left
+    right = quick_sort right
+
+    left + pivot + right
   end
 
   def self.swap(array, i, j)
