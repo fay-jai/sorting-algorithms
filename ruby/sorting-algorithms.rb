@@ -1,7 +1,19 @@
 module Sort_Algorithms
   # selection sort
   def self.selection_sort(array)
+    len = array.length
 
+    for i in 0...len
+      min_idx = i
+
+      for j in (i + 1)...len
+        min_idx = j if array[min_idx] > array[j]
+      end
+
+      swap(array, min_idx, i)
+    end
+
+    return array
   end
 
   # bubble sort
@@ -25,6 +37,8 @@ module Sort_Algorithms
   end
 
   def self.swap(array, i, j)
-
+    temp     = array[i]
+    array[i] = array[j]
+    array[j] = temp
   end
 end
