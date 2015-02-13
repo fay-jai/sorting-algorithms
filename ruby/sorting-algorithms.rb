@@ -103,11 +103,7 @@ module Sort_Algorithms
     right = []
 
     for i in 1...len
-      if array[i] <= pivot[0]
-        left.push array[i]
-      else
-        right.push array[i]
-      end
+      (array[i] <= pivot[0] ? left : right).push array[i]
     end
 
     left  = quick_sort left
