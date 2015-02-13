@@ -98,7 +98,7 @@ module Sort_Algorithms
     len = array.length
     return array if len < 2
 
-    pivot = array[0...1]
+    pivot = array.take 1
     left  = []
     right = []
 
